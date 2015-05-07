@@ -31,7 +31,7 @@ namespace AngularJSAuthentication.API.Providers
                 //if you want to force sending clientId/secrects once obtain access tokens. 
                 context.Validated();
                 //context.SetError("invalid_clientId", "ClientId should be sent.");
-                return Task.FromResult<object>(null);
+                //return Task.FromResult<object>(null);
             }
 
             using (AuthRepository _repo = new AuthRepository())
@@ -80,14 +80,18 @@ namespace AngularJSAuthentication.API.Providers
 
             var allowedOrigin = context.OwinContext.Get<string>("as:clientAllowedOrigin");
 
+            //CORS
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
+            //CORS
 
-            if (allowedOrigin == null) allowedOrigin = "*";
+            //if (allowedOrigin == null) allowedOrigin = "*";
 
-            context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { allowedOrigin });
+            //context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { allowedOrigin });
 
             using (AuthRepository _repo = new AuthRepository())
             {
+                
+
                 IdentityUser user = await _repo.FindUser(context.UserName, context.Password);
 
                 if (user == null)
@@ -105,7 +109,7 @@ namespace AngularJSAuthentication.API.Providers
             var props = new AuthenticationProperties(new Dictionary<string, string>
                 {
                     { 
-                        "as:client_id", (context.ClientId == null) ? string.Empty : context.ClientId
+                        "as:client_id", context.ClientId ?? string.Empty
                     },
                     { 
                         "userName", context.UserName

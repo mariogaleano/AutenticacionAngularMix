@@ -16,6 +16,8 @@ namespace AngularJSAuthentication.ResourceServer.App_Start
             // Web API routes
             config.MapHttpAttributeRoutes();
 
+            config.EnableCors();
+
             var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
             jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
         }
