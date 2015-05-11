@@ -6,9 +6,9 @@
         $scope.data = [];
 
 
-        console.log(user.clientId);
+        //console.log(user.clientId);
 
-        datafactory.getData().then(function (results) {
+        datafactory.getData($scope.cantidad).then(function (results) {
 
             $scope.data = results.data;
 
@@ -27,13 +27,16 @@
 
     $scope.loginData = {
         userName: user.clientId,
-        password: "",
+        password: "pruebasistecredito",
         useRefreshTokens: false
     };
 
     $scope.message = "";
 
     $scope.login = function () {
+
+
+        
 
         datafactory.login($scope.loginData).then(function (response) {
 
@@ -58,6 +61,8 @@
 
         $scope.data = null;
     };
+
+    $scope.login();
 
 
 }]);

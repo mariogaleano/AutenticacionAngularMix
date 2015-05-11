@@ -5,9 +5,9 @@
 
     var dataServiceFactory = {};
 
-    var getData = function () {
+    var getData = function (cantidad) {
 
-        return $http.get(serviceBase + '/datatests').then(function (results) {
+        return $http.get(serviceBase + '/datatests/' + cantidad).then(function (results) {
             return results;
         });
     };

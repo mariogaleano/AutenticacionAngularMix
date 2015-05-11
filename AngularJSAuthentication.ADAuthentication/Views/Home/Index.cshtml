@@ -22,7 +22,7 @@
 
         //jQuery.support.cors = true;
 
-    aplicacion.constant('user', { clientId: '@user' });
+        aplicacion.constant('user', { clientId: '@user' });
 
         var setValores = function () {
 
@@ -30,9 +30,11 @@
 
             //localStorage.clear();
 
-            localStorage.setItem('authorizationData', { token: '@ViewBag.AuthenticationHeader', userName: '@user', refreshToken: "", useRefreshTokens: false });
+            var data = { token: '@ViewBag.AuthenticationHeader', userName: '@user', refreshToken: "", useRefreshTokens: false };
 
+            console.log(JSON.stringify(data));
 
+            localStorage.setItem('loginData', JSON.stringify(data));
 
         };
 
@@ -43,10 +45,11 @@
 
     <h1>ASP.NET</h1>
 
+    <div class="body-content container-fluid" style="word-break: break-all">
 
-    Auth Header: @ViewBag.AuthenticationHeader
-
-    <div>
+        @*Auth Header: @ViewBag.AuthenticationHeader*@
+    </div>
+    <div style="display: none">
         <input type="text" class="form-control" placeholder="Username" ng-model="loginData.userName" required autofocus>
         <input type="password" class="form-control" placeholder="Password" ng-model="loginData.password" required>
         <input type="button" class="btn btn-primary btn-lg" value="Login" ng-click="login()" />
@@ -56,13 +59,16 @@
     </div>
 
     <br />
-    <input type="button" class="btn btn-primary btn-lg" value="Cargar" ng-click="Cargar()" ng-hide="data" />
+    <div ng-hide="data">
+        <input type="button" class="btn btn-primary btn-lg" value="Cargar" ng-click="Cargar()" />
+        <input type="text" ng-model="cantidad" />
+    </div>
 
+    <input type="button" class="btn btn-primary btn-lg" value="Limpiar" ng-click="Limpiar()" ng-show="data" />
     <ul ng-repeat="item in data">
         <li>  {{item}} </li>
     </ul>
 
-    <input type="button" class="btn btn-primary btn-lg" value="Limpiar" ng-click="Limpiar()" ng-show="data" />
+
 
 </div>
-

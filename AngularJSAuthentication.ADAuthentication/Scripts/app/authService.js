@@ -1,5 +1,5 @@
 ﻿'use strict';
-app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSettings', function ($http, $q, localStorageService, ngAuthSettings) {
+aplicacion.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSettings', function ($http, $q, localStorageService, ngAuthSettings) {
 
     var serviceBase = ngAuthSettings.apiServiceBaseUri;
     var authServiceFactory = {};
@@ -20,7 +20,15 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
 
     var _fillAuthData = function () {
 
-        var authData = localStorageService.get('authorizationData');
+        //var authData = localStorageService.get('authorizationData');
+
+        var data = localStorage.getItem('loginData');
+
+        if (data) {
+            var authData = JSON.parse(data);
+        }
+
+
         if (authData) {
             _authentication.isAuth = true;
             _authentication.userName = authData.userName;

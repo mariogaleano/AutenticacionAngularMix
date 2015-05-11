@@ -50,7 +50,7 @@ app.config(function ($routeProvider) {
 var serviceBase = 'http://localhost:26264/';
 //var serviceBase = 'http://angular.tests.com/api/';
 
-var resourcesServiceBase = 'http://angular.tests.com/resources/';
+var resourcesServiceBase = 'http://localhost:47039/';
 //var serviceBase = 'http://ngauthenticationapi.azurewebsites.net/';
 app.constant('ngAuthSettings', {
     apiServiceBaseUri: serviceBase,

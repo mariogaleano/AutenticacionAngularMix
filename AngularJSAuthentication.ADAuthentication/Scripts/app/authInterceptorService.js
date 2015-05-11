@@ -3,23 +3,32 @@ aplicacion.factory('authInterceptorService', ['$q', '$injector', '$location', 'l
 
     var authInterceptorServiceFactory = {};
 
-    var _request = function (config) {
+    var _request = function(config) {
 
         config.headers = config.headers || {};
-       
+
         var authData = localStorageService.get('authorizationData');
         if (authData) {
-            //config.headers.Authorization = 'Bearer ' + authData.token;
-            config.headers.Authorization = authData.token;
+            config.headers.Authorization = 'Bearer ' + authData.token;
+            //config.headers.Authorization = authData.token;
         }
 
-        return config;
-    }
+        //var data = localStorage.getItem('loginData');
 
-    var _responseError = function (rejection) {
+        //if (data) {
+        //    var datos = JSON.parse(data);
+
+        //    config.headers.Authorization = datos.token;
+        //}
+
+        return config;
+    };
+
+    var _responseError = function(rejection) {
         if (rejection.status === 401) {
-            var authService = $injector.get('authService');
+            //var authService = $injector.get('authService');
             var authData = localStorageService.get('authorizationData');
+
 
             if (authData) {
                 if (authData.useRefreshTokens) {
@@ -27,11 +36,11 @@ aplicacion.factory('authInterceptorService', ['$q', '$injector', '$location', 'l
                     return $q.reject(rejection);
                 }
             }
-            authService.logOut();
+            //authService.logOut();
             $location.path('/login');
         }
         return $q.reject(rejection);
-    }
+    };
 
     authInterceptorServiceFactory.request = _request;
     authInterceptorServiceFactory.responseError = _responseError;

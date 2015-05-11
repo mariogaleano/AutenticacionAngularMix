@@ -105,6 +105,9 @@ namespace AngularJSAuthentication.API.Providers
             identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
             identity.AddClaim(new Claim(ClaimTypes.Role, "user"));
             identity.AddClaim(new Claim("sub", context.UserName));
+            identity.AddClaim(new Claim("tipo", "SisteCrédito"));
+
+            
 
             var props = new AuthenticationProperties(new Dictionary<string, string>
                 {

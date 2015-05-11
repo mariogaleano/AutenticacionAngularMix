@@ -27,7 +27,8 @@ namespace AngularJSAuthentication.ADAuthentication
                    "~/Scripts/app/app.js",
                    "~/Scripts/app/dataFactory.js",
                    "~/Scripts/app/controlador.js",
-                   "~/Scripts/app/authInterceptorService.js")); 
+                   "~/Scripts/app/authInterceptorService.js",
+                   "~/Scripts/app/authService.js"));
 #endif
 
 #if !DEBUG
@@ -38,7 +39,8 @@ namespace AngularJSAuthentication.ADAuthentication
                 "~/Scripts/app/app.js",
                 "~/Scripts/app/release/dataFactory.js",
                 "~/Scripts/app/controlador.js",
-                "~/Scripts/app/authInterceptorService.js"));
+                "~/Scripts/app/authInterceptorService.js",
+            "~/Scripts/app/authService.js));
 
 #endif
 

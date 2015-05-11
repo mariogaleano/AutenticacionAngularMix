@@ -1,22 +1,21 @@
 ﻿using System.Collections.Generic;
-using System.Web.Cors;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
 namespace AngularJSAuthentication.ResourceServer.Controllers
 {
     [Authorize]
-    [RoutePrefix("api/datatests")]
+    [RoutePrefix("api/datatests/{cantidad}")]
     [EnableCors("*", "*", "*")]
     public class DatatestsController : ApiController
     {
         [Route("")]
-        public List<string> Get()
+        public List<string> Get(int cantidad = 10)
         {
             var usuario = User.Identity.Name;
 
             var results = new List<string>();
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < cantidad; i++)
             {
                 results.Add(usuario + " "  + i);
             }

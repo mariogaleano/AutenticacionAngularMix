@@ -12,7 +12,17 @@ app.factory('testsService', ['$http', 'ngAuthSettings', function ($http, ngAuthS
         });
     };
 
+
+    var _getTestData = function (cantidad) {
+
+        return $http.get(serviceBase + 'api/datatests/' + cantidad).then(function (results) {
+            return results;
+        });
+    };
+
     testsServiceFactory.getData = _getData;
+
+    testsServiceFactory.getTestData = _getTestData;
 
     return testsServiceFactory;
 
