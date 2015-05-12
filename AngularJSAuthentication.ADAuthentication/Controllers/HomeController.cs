@@ -32,7 +32,7 @@ namespace AngularJSAuthentication.ADAuthentication.Controllers
 
         public async Task<ActionResult> Index()
         {
-            await UserProfile();
+            //await UserProfile();
 
             
 

@@ -27,7 +27,12 @@ namespace AngularJSAuthentication.API
             WebApiConfig.Register(config);
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
             app.UseWebApi(config);
+
+            
+
+#if DEBUG
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<AuthContext, Migrations.Configuration>());
+#endif
 
         }
 
@@ -37,8 +42,9 @@ namespace AngularJSAuthentication.API
             app.UseExternalSignInCookie(Microsoft.AspNet.Identity.DefaultAuthenticationTypes.ExternalCookie);
             OAuthBearerOptions = new OAuthBearerAuthenticationOptions();
 
-            OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions() {
-            
+            OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions()
+            {
+
                 AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/token"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(30),
@@ -51,7 +57,7 @@ namespace AngularJSAuthentication.API
             app.UseOAuthBearerAuthentication(OAuthBearerOptions);
 
 
-            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+            ////app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
 
             ////Configure Google External Login
             //googleAuthOptions = new GoogleOAuth2AuthenticationOptions()
@@ -73,5 +79,4 @@ namespace AngularJSAuthentication.API
 
         }
     }
-
 }

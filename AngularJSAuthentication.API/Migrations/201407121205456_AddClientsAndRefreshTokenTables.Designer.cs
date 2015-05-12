@@ -6,6 +6,8 @@ namespace AngularJSAuthentication.API.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
+#if DEBUG
+
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
     public sealed partial class AddClientsAndRefreshTokenTables : IMigrationMetadata
     {
@@ -26,4 +28,5 @@ namespace AngularJSAuthentication.API.Migrations
             get { return Resources.GetString("Target"); }
         }
     }
+#endif
 }

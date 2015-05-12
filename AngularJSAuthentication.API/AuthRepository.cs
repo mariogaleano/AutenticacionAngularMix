@@ -27,6 +27,8 @@ namespace AngularJSAuthentication.API
 
         public async Task<IdentityResult> RegisterUser(UserModel userModel)
         {
+            
+
             IdentityUser user = new IdentityUser
             {
                 UserName = userModel.UserName

@@ -7,6 +7,9 @@ namespace AngularJSAuthentication.API.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
+
+#if DEBUG
+
     internal sealed class Configuration : DbMigrationsConfiguration<AngularJSAuthentication.API.AuthContext>
     {
         public Configuration()
@@ -53,4 +56,6 @@ namespace AngularJSAuthentication.API.Migrations
             return ClientsList;
         }
     }
+#endif
+
 }

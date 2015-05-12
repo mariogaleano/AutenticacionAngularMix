@@ -26,7 +26,7 @@
 
         var deferred = $q.defer();
 
-        $http.post('https://localhost:44303/' + 'token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function (response) {
+        $http.post('https://localhost:44303/token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function (response) {
 
             if (loginData.useRefreshTokens) {
                 localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName, refreshToken: response.refresh_token, useRefreshTokens: true });
@@ -43,7 +43,8 @@
 
         }).error(function (err, status) {
 
-            deferred.reject(err);
+            if (err)
+                deferred.reject(err);
         });
 
         return deferred.promise;

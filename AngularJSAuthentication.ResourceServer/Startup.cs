@@ -29,7 +29,7 @@ namespace AngularJSAuthentication.ResourceServer
             OAuthBearerOptions = new OAuthBearerAuthenticationOptions();
             //Token Consumption
             app.UseOAuthBearerAuthentication(OAuthBearerOptions);
-            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+            //app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
         }
     }
 }

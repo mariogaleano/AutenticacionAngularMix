@@ -13,7 +13,7 @@ namespace AngularJSAuthentication.API
         public AuthContext()
             : base("AuthContext")
         {
-     
+            this.Configuration.ProxyCreationEnabled = false;
         }
 
         public DbSet<Client> Clients { get; set; }

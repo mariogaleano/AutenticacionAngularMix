@@ -1,10 +1,7 @@
-﻿using Microsoft.Owin.Security.OAuth;
+﻿using System.Web.Http.Cors;
 using Newtonsoft.Json.Serialization;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Formatting;
-using System.Web;
 using System.Web.Http;
 
 namespace AngularJSAuthentication.ResourceServer.App_Start
@@ -16,7 +13,8 @@ namespace AngularJSAuthentication.ResourceServer.App_Start
             // Web API routes
             config.MapHttpAttributeRoutes();
 
-            config.EnableCors();
+            //var corsAttr = new EnableCorsAttribute("*", "*", "*");
+            //config.EnableCors(corsAttr);
 
             var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
             jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();

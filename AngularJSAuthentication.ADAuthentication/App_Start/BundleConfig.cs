@@ -29,10 +29,10 @@ namespace AngularJSAuthentication.ADAuthentication
                    "~/Scripts/app/controlador.js",
                    "~/Scripts/app/authInterceptorService.js",
                    "~/Scripts/app/authService.js"));
+
 #endif
 
 #if !DEBUG
-
 
 
             bundles.Add(new ScriptBundle("~/bundles/applicationFiles").Include(
@@ -40,7 +40,7 @@ namespace AngularJSAuthentication.ADAuthentication
                 "~/Scripts/app/release/dataFactory.js",
                 "~/Scripts/app/controlador.js",
                 "~/Scripts/app/authInterceptorService.js",
-            "~/Scripts/app/authService.js));
+            "~/Scripts/app/authService.js"));
 
 #endif
 

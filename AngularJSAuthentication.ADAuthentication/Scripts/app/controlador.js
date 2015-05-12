@@ -1,12 +1,11 @@
-﻿aplicacion.controller('controlador',['$scope', 'datafactory','user', function ($scope, datafactory,user) {
+﻿aplicacion.controller('controlador', ['$scope', 'datafactory', 'user', function ($scope, datafactory, user) {
 
-
+    $scope.cantidad = 10;
     $scope.Cargar = function () {
 
         $scope.data = [];
 
 
-        //console.log(user.clientId);
 
         datafactory.getData($scope.cantidad).then(function (results) {
 
@@ -17,7 +16,7 @@
             if (error.description)
                 $scope.message = error.description;
 
-            if(error)
+            if (error)
                 $scope.message = error;
 
             $scope.data = null;
@@ -36,7 +35,7 @@
     $scope.login = function () {
 
 
-        
+
 
         datafactory.login($scope.loginData).then(function (response) {
 
@@ -53,11 +52,11 @@
                  $scope.message = "Error - ";
                  $scope.message += err;
              }
-             
+
          });
     };
 
-    $scope.Limpiar = function() {
+    $scope.Limpiar = function () {
 
         $scope.data = null;
     };

@@ -14,6 +14,9 @@ namespace AngularJSAuthentication.ResourceServer.Controllers
         {
             var usuario = User.Identity.Name;
 
+            if (cantidad > 200)
+                cantidad = 200;
+
             var results = new List<string>();
             for (int i = 0; i < cantidad; i++)
             {

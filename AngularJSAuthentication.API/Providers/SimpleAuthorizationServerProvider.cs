@@ -81,7 +81,7 @@ namespace AngularJSAuthentication.API.Providers
             var allowedOrigin = context.OwinContext.Get<string>("as:clientAllowedOrigin");
 
             //CORS
-            context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
+            //context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "https://mgadauthentication.azurewebsites.net" });
             //CORS
 
             //if (allowedOrigin == null) allowedOrigin = "*";
