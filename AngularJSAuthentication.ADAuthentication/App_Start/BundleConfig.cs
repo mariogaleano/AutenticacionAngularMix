@@ -32,7 +32,17 @@ namespace AngularJSAuthentication.ADAuthentication
 
 #endif
 
-#if !DEBUG
+#if PruebasSC
+            bundles.Add(new ScriptBundle("~/bundles/applicationFiles").Include(
+                   "~/Scripts/app/app.js",
+                   "~/Scripts/app/dataFactory.js",
+                   "~/Scripts/app/controlador.js",
+                   "~/Scripts/app/authInterceptorService.js",
+                   "~/Scripts/app/authService.js"));
+
+#endif
+
+#if RELEASE
 
 
             bundles.Add(new ScriptBundle("~/bundles/applicationFiles").Include(
